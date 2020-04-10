@@ -1,0 +1,27 @@
+@import "buttons";
+@import "fields";
+
+.search-form{
+    @extend %flex-align-center;
+
+    .search-field{
+        width: 85%;
+        border-radius: 0px;
+        padding: 0px;
+        height: 38px;
+    }
+
+    .search-submit{
+        border-radius: 0px;
+        border-color: $color-primary;
+        width: 15%;
+        background-color: $color-primary;
+        color: $color-white;
+        height: 100%;
+
+        i{
+            margin: 0 auto;
+            font-size: 1.5rem;
+        }
+    }
+}

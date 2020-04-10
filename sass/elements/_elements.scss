@@ -1,0 +1,87 @@
+/* Inherit box-sizing to more easily change it's value on a component level.
+@link http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+body {
+	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
+}
+
+hr {
+	background-color: $color__background-hr;
+	border: 0;
+	height: 1px;
+	margin-bottom: 1.5em;
+}
+
+@import "lists";
+
+img {
+	height: auto; /* Make sure images are scaled correctly. */
+	max-width: 100%; /* Adhere to container width. */
+}
+
+figure {
+	margin: 1em 0; /* Extra wide images within figure tags don't overflow the content area. */
+}
+
+@import "tables";
+
+#masthead {
+	padding: 0 0.5rem;
+
+	a{
+		color: #fff;
+		text-decoration: none;
+	}
+
+	background-color: $color__header-background;
+
+	#top-bar-nav{
+		@extend %flex-align-center;
+		height: 50px;
+
+		.top-bar-left{
+			@extend %flex-align-center;
+		}
+
+		.top-bar-right{
+			@extend %flex-align-center;
+			margin-left: auto;
+
+			.account-link{
+				font-size: .85rem;
+				padding-right: 0.75rem;
+			}
+
+			.cart-link{
+				font-size: 1.65rem;
+			}
+		}
+	}
+
+	.mobile-menu-button{
+		a{
+			i{
+				font-size: 1.75rem;
+			}
+		} 
+	}
+
+	.site-title{
+		a{
+			font-size: 2rem;
+			font-family: 'Mystery Quest', cursive;
+			color: $color-primary;
+		}
+		margin: 0 .75rem;
+		line-height: 0;
+	}
+}
