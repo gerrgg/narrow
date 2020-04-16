@@ -1,77 +1,76 @@
 #masthead {
 	padding: 0 0.5rem;
 
-	a{
+	a {
 		color: #fff;
 		text-decoration: none;
 	}
 
 	background-color: $color__header-background;
 
-	#top-bar-nav{
+	#top-bar-nav {
 		@extend %flex-align-center;
 		height: 50px;
 
-		.top-bar-left{
+		.top-bar-left {
 			@extend %flex-align-center;
 		}
 
-		.top-bar-right{
+		.top-bar-right {
 			@extend %flex-align-center;
 			margin-left: auto;
 
-			.account-link{
-				font-size: .85rem;
+			.account-link {
+				font-size: 0.85rem;
 				padding-right: 0.75rem;
 			}
 
-			.cart-link{
+			.cart-link {
 				font-size: 1.65rem;
 			}
 		}
-
 	}
 
-	.mobile-menu-button{
-		a{
-			i{
+	.mobile-menu-button {
+		a {
+			i {
 				font-size: 1.75rem;
 			}
-		} 
+		}
 	}
 
-	.site-title{
-		a{
+	.site-title {
+		a {
 			font-size: 2rem;
-			font-family: 'Caesar Dressing', cursive;
+			font-family: "Caesar Dressing", cursive;
 			color: $color-primary;
 		}
-		margin: 0 .75rem;
+		margin: 0 0.75rem;
 		line-height: 0;
 	}
 }
 
-.search-form{
-    @extend %flex-align-center;
+.search-form {
+	@extend %flex-align-center;
 
-    .search-field{
-        width: 85%;
-        border-radius: 0px;
-        padding: 0px;
-        height: 38px;
-    }
+	.search-field {
+		width: 85%;
+		border-radius: 0px;
+		padding: 0px;
+		height: 38px;
+	}
 
-    .search-submit{
-        border-radius: 0px;
-        border-color: $color-primary;
-        width: 15%;
-        background-color: $color-primary;
-        color: $color-white;
-        height: 100%;
+	.search-submit {
+		border-radius: 0px;
+		border-color: $color-primary;
+		width: 15%;
+		background-color: $color-primary;
+		color: $color-white;
+		height: 100%;
 
-        i{
-            margin: 0 auto;
-            font-size: 1.5rem;
-        }
-    }
+		i {
+			margin: 0 auto;
+			font-size: 1.5rem;
+		}
+	}
 }

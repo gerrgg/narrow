@@ -50,7 +50,8 @@ if ( ! function_exists( 'narrow_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'narrow' ),
+				'menu-1' => esc_html__( 'Under search bar', 'narrow' ),
+				'menu-2' => esc_html__( 'Slide out menu', 'narrow' ),
 			)
 		);
 
@@ -143,7 +144,10 @@ add_action( 'widgets_init', 'narrow_widgets_init' );
 function narrow_scripts() {
 	wp_enqueue_style( 'narrow-style', get_stylesheet_uri(), array(), _S_VERSION );
 
-	wp_enqueue_script( 'narrow-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'slideout', get_template_directory_uri() . '/js/slideout.min.js', array(), _S_VERSION, true );
+
+	wp_enqueue_script( 'narrow-skip-link-focus-fix', get_template_directory_uri() . '/js/mobile-menu.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'narrow-mobile-menu', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

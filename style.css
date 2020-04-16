@@ -431,7 +431,7 @@ html {
   box-sizing: border-box; }
 
 body {
-  background: #fff;
+  background: #f7f7f7;
   /* Fallback for when there is no custom background color defined. */ }
 
 hr {
@@ -587,11 +587,58 @@ a {
     padding-left: 0;
     overflow: hidden; }
     .main-navigation ul li {
-      padding: .5rem;
+      padding: 0.5rem;
       padding-left: 0rem;
       white-space: nowrap; }
       .main-navigation ul li a {
         word-wrap: none; }
+
+.slideout-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 256px;
+  min-height: 100vh;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  z-index: 0;
+  display: none; }
+
+.slideout-menu-left {
+  left: 0; }
+
+.slideout-menu-right {
+  right: 0; }
+
+.slideout-panel {
+  position: relative;
+  z-index: 1;
+  will-change: transform;
+  background-color: #f7f7f7;
+  /* A background-color is required */
+  min-height: 100vh; }
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+  overflow: hidden; }
+
+.slideout-open .slideout-menu {
+  display: block; }
+
+.slideout-panel:before {
+  content: "";
+  display: block;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.5s ease-in-out; }
+
+.panel-open:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99; }
 
 /*--------------------------------------------------------------
 ## Header
@@ -607,18 +654,18 @@ a {
     #masthead #top-bar-nav .top-bar-right {
       margin-left: auto; }
       #masthead #top-bar-nav .top-bar-right .account-link {
-        font-size: .85rem;
+        font-size: 0.85rem;
         padding-right: 0.75rem; }
       #masthead #top-bar-nav .top-bar-right .cart-link {
         font-size: 1.65rem; }
   #masthead .mobile-menu-button a i {
     font-size: 1.75rem; }
   #masthead .site-title {
-    margin: 0 .75rem;
+    margin: 0 0.75rem;
     line-height: 0; }
     #masthead .site-title a {
       font-size: 2rem;
-      font-family: 'Caesar Dressing', cursive;
+      font-family: "Caesar Dressing", cursive;
       color: #358c69; }
 
 .search-form .search-field {

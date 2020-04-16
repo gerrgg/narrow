@@ -632,16 +632,16 @@ body.woocommerce-account header.entry-header {
   color: #7a7a7a; }
   #customer_login div {
     background-color: #fff;
-    padding: .5rem;
-    margin-top: .55rem; }
+    padding: 0.5rem;
+    margin-top: 0.55rem; }
     #customer_login div h2 {
       color: #404040;
       text-align: center;
       margin: 0.25rem;
       border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
       #customer_login div h2 span {
-        padding-left: .5rem;
-        font-size: .75rem; }
+        padding-left: 0.5rem;
+        font-size: 0.75rem; }
   #customer_login #password {
     margin: 0; }
   #customer_login button.woocommerce-form-login__submit,
@@ -649,9 +649,9 @@ body.woocommerce-account header.entry-header {
     background-color: #358c69;
     color: #fff;
     border: #358c69;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
     width: 100%;
-    padding: .75rem .25rem;
+    padding: 0.75rem 0.25rem;
     font-size: 1.25rem; }
   #customer_login .woocommerce-LostPassword {
     text-align: center; }
@@ -660,8 +660,8 @@ body.woocommerce-account header.entry-header {
 
 p.input-wrapper {
   border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: .5rem;
-  margin: .25rem; }
+  padding: 0.5rem;
+  margin: 0.25rem; }
   p.input-wrapper input {
     border: none;
     height: 100%;
@@ -669,7 +669,7 @@ p.input-wrapper {
     font-size: 20px;
     font-size: 1.25rem; }
   p.input-wrapper i {
-    padding-right: .5rem;
+    padding-right: 0.5rem;
     font-size: 28px;
     font-size: 1.75rem; }
 
