@@ -46,3 +46,14 @@ $woocommerce__color-info: #3d9cd2;
  * WooCommerce widgets
  */
 @import "shop/widgets";
+
+
+/**
+ * General WooCommerce components
+ */
+ @import "shop/components";
+
+ /**
+ * Account stuff
+ */
+ @import "shop/myaccount";

@@ -1,0 +1,79 @@
+body.woocommerce-account{
+    header.entry-header{
+        display: none;
+    }
+}
+
+#customer_login{
+    color: $color__text-grey;
+    
+    div {
+        background-color: $color__background-body;
+        padding: .5rem;
+        margin-top: .55rem;
+
+        h2{
+            color: $color__text-main;
+            text-align: center;
+            margin: .25rem ;
+            border-bottom: $border-light;
+        
+            span {
+                padding-left: .5rem;
+                font-size: .75rem;
+            }
+        }
+    }
+
+    #password{
+        margin: 0;
+    }
+
+    .show-password-input{
+        font-family: FontAwesome;
+        content: "\f053";
+        display: block;
+        // content: Show;
+    }
+
+    button.woocommerce-form-login__submit{
+        background-color: $color_primary;
+        color: #fff;
+        border: $color_primary;
+        margin-top: .5rem;
+
+        width: 100%;
+        padding: .75rem .25rem;
+        font-size: 1.25rem;
+    }
+
+    .woocommerce-LostPassword{
+        text-align: center;
+
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+p.input-wrapper{
+
+    border: $border-light;
+    padding: .5rem;
+    @extend %flex-align-center;
+    margin: .25rem;
+
+    input{
+        border: none;
+        height: 100%;
+        width: 90%;
+        @include center-block;
+        @include font-size(1.25)
+    }
+
+    i{
+        padding-right: .5rem;
+        @include font-size(1.75)
+    }
+
+}

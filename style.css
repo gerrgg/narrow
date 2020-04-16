@@ -440,6 +440,9 @@ hr {
   height: 1px;
   margin-bottom: 1.5em; }
 
+span {
+  font-size: initial; }
+
 ul,
 ol {
   margin: 0 0 1.5em 3em; }
@@ -474,31 +477,6 @@ figure {
 table {
   margin: 0 0 1.5em;
   width: 100%; }
-
-#masthead {
-  padding: 0 0.5rem;
-  background-color: #585563; }
-  #masthead a {
-    color: #fff;
-    text-decoration: none; }
-  #masthead #top-bar-nav {
-    height: 50px; }
-    #masthead #top-bar-nav .top-bar-right {
-      margin-left: auto; }
-      #masthead #top-bar-nav .top-bar-right .account-link {
-        font-size: .85rem;
-        padding-right: 0.75rem; }
-      #masthead #top-bar-nav .top-bar-right .cart-link {
-        font-size: 1.65rem; }
-  #masthead .mobile-menu-button a i {
-    font-size: 1.75rem; }
-  #masthead .site-title {
-    margin: 0 .75rem;
-    line-height: 0; }
-    #masthead .site-title a {
-      font-size: 2rem;
-      font-family: 'Mystery Quest', cursive;
-      color: #30bced; }
 
 /*--------------------------------------------------------------
 # Forms
@@ -548,7 +526,7 @@ input[type="color"],
 textarea {
   color: #666;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 4px;
   padding: 3px; }
   input[type="text"]:focus,
   input[type="email"]:focus,
@@ -574,21 +552,8 @@ select {
 textarea {
   width: 100%; }
 
-.search-form .search-field {
-  width: 85%;
-  border-radius: 0px;
-  padding: 0px;
-  height: 38px; }
-.search-form .search-submit {
-  border-radius: 0px;
-  border-color: #30bced;
-  width: 15%;
-  background-color: #30bced;
-  color: #fff;
-  height: 100%; }
-  .search-form .search-submit i {
-    margin: 0 auto;
-    font-size: 1.5rem; }
+.woocommerce-form-row--wide input {
+  width: 100%; }
 
 /*--------------------------------------------------------------
 # Navigation
@@ -597,11 +562,11 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-  color: #4169e1; }
+  color: #235789; }
   a:visited {
-    color: #800080; }
+    color: #235789; }
   a:hover, a:focus, a:active {
-    color: #191970; }
+    color: #fe9b15; }
   a:focus {
     outline: thin dotted; }
   a:hover, a:active {
@@ -627,6 +592,50 @@ a {
       white-space: nowrap; }
       .main-navigation ul li a {
         word-wrap: none; }
+
+/*--------------------------------------------------------------
+## Header
+--------------------------------------------------------------*/
+#masthead {
+  padding: 0 0.5rem;
+  background-color: #585563; }
+  #masthead a {
+    color: #fff;
+    text-decoration: none; }
+  #masthead #top-bar-nav {
+    height: 50px; }
+    #masthead #top-bar-nav .top-bar-right {
+      margin-left: auto; }
+      #masthead #top-bar-nav .top-bar-right .account-link {
+        font-size: .85rem;
+        padding-right: 0.75rem; }
+      #masthead #top-bar-nav .top-bar-right .cart-link {
+        font-size: 1.65rem; }
+  #masthead .mobile-menu-button a i {
+    font-size: 1.75rem; }
+  #masthead .site-title {
+    margin: 0 .75rem;
+    line-height: 0; }
+    #masthead .site-title a {
+      font-size: 2rem;
+      font-family: 'Mystery Quest', cursive;
+      color: #358c69; }
+
+.search-form .search-field {
+  width: 85%;
+  border-radius: 0px;
+  padding: 0px;
+  height: 38px; }
+.search-form .search-submit {
+  border-radius: 0px;
+  border-color: #358c69;
+  width: 15%;
+  background-color: #358c69;
+  color: #fff;
+  height: 100%; }
+  .search-form .search-submit i {
+    margin: 0 auto;
+    font-size: 1.5rem; }
 
 /*--------------------------------------------------------------
 # Accessibility

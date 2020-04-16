@@ -8,11 +8,15 @@ $color__background-ins: #fff9c0;
 $color__text-screen: #21759b;
 $color__text-input: #666;
 $color__text-input-focus: #111;
-$color__link: #4169e1; //royalblue
-$color__link-visited: #800080; //purple
-$color__link-hover: #191970; //midnightblue
-$color__text-main: #404040;
+$color__link: #235789; //royalblue
+$color__link-visited: #235789; //purple
+$color__link-hover: #fe9b15; //midnightblue
 
+// Text
+$color__text-main: #404040;
+$color__text-grey: #7a7a7a;
+
+// borders
 $color__border-button: #ccc #ccc #bbb;
 $color__border-button-hover: #ccc #bbb #aaa;
 $color__border-button-focus: #aaa #bbb #bbb;
@@ -21,7 +25,9 @@ $color__border-abbr: #666;
 
 $color__header-background: #585563;
 
-$color-primary: #30bced;
+$color-primary: #358c69;
 $color-white: #fff;
 $color-dark: #333;
 $color-light-grey: #585563;
+
+$border-light: 1px solid rgba(0,0,0,0.1);

@@ -21,6 +21,10 @@ hr {
 	margin-bottom: 1.5em;
 }
 
+span{
+	font-size: initial;
+}
+
 @import "lists";
 
 img {
@@ -34,55 +38,4 @@ figure {
 
 @import "tables";
 
-#masthead {
-	padding: 0 0.5rem;
 
-	a{
-		color: #fff;
-		text-decoration: none;
-	}
-
-	background-color: $color__header-background;
-
-	#top-bar-nav{
-		@extend %flex-align-center;
-		height: 50px;
-
-		.top-bar-left{
-			@extend %flex-align-center;
-		}
-
-		.top-bar-right{
-			@extend %flex-align-center;
-			margin-left: auto;
-
-			.account-link{
-				font-size: .85rem;
-				padding-right: 0.75rem;
-			}
-
-			.cart-link{
-				font-size: 1.65rem;
-			}
-		}
-
-	}
-
-	.mobile-menu-button{
-		a{
-			i{
-				font-size: 1.75rem;
-			}
-		} 
-	}
-
-	.site-title{
-		a{
-			font-size: 2rem;
-			font-family: 'Mystery Quest', cursive;
-			color: $color-primary;
-		}
-		margin: 0 .75rem;
-		line-height: 0;
-	}
-}

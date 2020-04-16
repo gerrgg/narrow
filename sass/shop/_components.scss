@@ -221,6 +221,18 @@ p.stars {
 /**
  * Notices
  */
+
+ .woocommerce-notices-wrapper{
+	ul{
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
+
+	 
+	text-align: center;
+ }
+
 .woocommerce-message,
 .woocommerce-info,
 .woocommerce-error,
@@ -240,6 +252,7 @@ p.no-comments {
 
 .woocommerce-error {
 	background-color: $woocommerce__color-error;
+	color: #fff;
 }
 
 .demo_store {
