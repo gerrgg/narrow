@@ -98,12 +98,10 @@ function narrow_header_account_link(){
 
 add_action( 'narrow_header_top_bar_right', 'narrow_header_account_link', 5 );
 
-/**
- * Gets the users name and displays a friendly greeting
- */
+
 function narrow_get_account_link_message(){
 	$user = wp_get_current_user();
-	$message = ( $user ) ? 'Sup, ' . ucfirst( $user->display_name ) . '!' : 'Account';
+	$message = ( isset( $user->data->ID ) ) ? 'Hello, ' . ucfirst( $user->display_name ) . '!' : 'Sign in';
 
 	return $message;
 }
@@ -120,5 +118,44 @@ function narrow_header_cart_link(){
 				</a>
 			</div>', $url);
 }
-
 add_action( 'narrow_header_top_bar_right', 'narrow_header_cart_link', 10 );
+
+function narrow_mobile_menu_header(){
+	$url = get_permalink( get_option('woocommerce_myaccount_page_id') );
+	$message = narrow_get_account_link_message();
+
+	printf( '<header>
+				<a href="%s" role="button">
+					<i class="fas fa-user-circle"></i>
+					<span>%s</span>
+				</a>
+			</header>', $url, $message );
+}
+
+add_action( 'narrow_mobile_menu', 'narrow_mobile_menu_header', 1 );
+
+
+
+function narrow_mobile_account_menu(){
+
+	wp_nav_menu(
+		array(
+			'theme_location' => 'menu-2',
+			'menu_id'        => 'primary-menu',
+		)
+	);
+	
+}
+add_action( 'narrow_mobile_menu', 'narrow_mobile_account_menu', 5 );
+
+function narrow_mobile_2nd_menu(){
+
+	wp_nav_menu(
+		array(
+			'theme_location' => 'menu-3',
+			'menu_id'        => 'primary-menu',
+		)
+	);
+	
+}
+add_action( 'narrow_mobile_menu', 'narrow_mobile_2nd_menu', 5 );

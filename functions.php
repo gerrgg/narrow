@@ -51,7 +51,8 @@ if ( ! function_exists( 'narrow_setup' ) ) :
 		register_nav_menus(
 			array(
 				'menu-1' => esc_html__( 'Under search bar', 'narrow' ),
-				'menu-2' => esc_html__( 'Slide out menu', 'narrow' ),
+				'menu-2' => esc_html__( 'Top menu in slideout menu', 'narrow' ),
+				'menu-3' => esc_html__( '2nd top menu in slideout menu', 'narrow' ),
 			)
 		);
 

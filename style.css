@@ -41,7 +41,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	## Captions
 	## Galleries
 --------------------------------------------------------------*/
-#masthead #top-bar-nav, #masthead #top-bar-nav .top-bar-left, #masthead #top-bar-nav .top-bar-right, .search-form {
+.slideout-menu header a, #masthead #top-bar-nav, #masthead #top-bar-nav .top-bar-left, #masthead #top-bar-nav .top-bar-right, .search-form {
   display: flex;
   align-items: center; }
 
@@ -603,6 +603,28 @@ a {
   -webkit-overflow-scrolling: touch;
   z-index: 0;
   display: none; }
+  .slideout-menu a {
+    text-decoration: none; }
+  .slideout-menu header {
+    background-color: #585563;
+    padding: .5rem; }
+    .slideout-menu header a {
+      margin: 0;
+      color: #fff;
+      font-size: 1.9rem; }
+      .slideout-menu header a i {
+        padding-right: .5rem; }
+      .slideout-menu header a span {
+        font-size: 1.25rem; }
+  .slideout-menu ul {
+    margin: 0 0 .25rem;
+    padding: 0;
+    list-style-type: none;
+    background-color: #fff; }
+    .slideout-menu ul li {
+      padding: 1rem .5rem; }
+      .slideout-menu ul li a {
+        color: #111; }
 
 .slideout-menu-left {
   left: 0; }

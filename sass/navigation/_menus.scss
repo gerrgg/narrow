@@ -33,6 +33,50 @@
 	-webkit-overflow-scrolling: touch;
 	z-index: 0;
 	display: none;
+
+	a{
+		text-decoration: none;
+	}
+
+	header{
+		background-color: $color__header-background;
+		padding: .5rem;
+
+		a{
+			@extend %flex-align-center;
+
+			margin: 0;
+			color: #fff;
+
+			font-size: 1.9rem;
+
+			i{
+				padding-right: .5rem;
+			}
+
+			span{
+				font-size: 1.25rem;
+			}
+			
+		}
+		
+	}
+
+	ul{
+		margin: 0 0 .25rem;
+		padding: 0;
+		list-style-type: none;
+		background-color: $color_white;
+
+		li{
+			padding: 1rem .5rem;
+
+			a{
+				color: #111;
+			}
+			// border-bottom: $border-light
+		}
+	}
 }
 
 .slideout-menu-left {

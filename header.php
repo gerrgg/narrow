@@ -24,19 +24,7 @@
 <?php wp_body_open(); ?>
 
 <nav id="menu">
-
-  <header>
-    <h2>Menu</h2>
-  </header>
-
-  <?php 
-	wp_nav_menu(
-		array(
-			'theme_location' => 'menu-1',
-			'menu_id'        => 'primary-menu',
-		)
-	);
-  ?>
+  <?php do_action( 'narrow_mobile_menu' ); ?>
 </nav>
 
 <div id="page" class="site">
