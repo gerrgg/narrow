@@ -29,14 +29,8 @@ body.woocommerce-account{
         margin: 0;
     }
 
-    .show-password-input{
-        font-family: FontAwesome;
-        content: "\f053";
-        display: block;
-        // content: Show;
-    }
-
-    button.woocommerce-form-login__submit{
+    button.woocommerce-form-login__submit,
+    button.woocommerce-form-register__submit{
         background-color: $color_primary;
         color: #fff;
         border: $color_primary;
@@ -56,6 +50,7 @@ body.woocommerce-account{
     }
 }
 
+
 p.input-wrapper{
 
     border: $border-light;
@@ -67,7 +62,6 @@ p.input-wrapper{
         border: none;
         height: 100%;
         width: 90%;
-        @include center-block;
         @include font-size(1.25)
     }
 

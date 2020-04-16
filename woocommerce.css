@@ -644,11 +644,8 @@ body.woocommerce-account header.entry-header {
         font-size: .75rem; }
   #customer_login #password {
     margin: 0; }
-  #customer_login .show-password-input {
-    font-family: FontAwesome;
-    content: "\f053";
-    display: block; }
-  #customer_login button.woocommerce-form-login__submit {
+  #customer_login button.woocommerce-form-login__submit,
+  #customer_login button.woocommerce-form-register__submit {
     background-color: #358c69;
     color: #fff;
     border: #358c69;
@@ -669,9 +666,6 @@ p.input-wrapper {
     border: none;
     height: 100%;
     width: 90%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
     font-size: 20px;
     font-size: 1.25rem; }
   p.input-wrapper i {
