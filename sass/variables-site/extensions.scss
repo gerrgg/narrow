@@ -2,3 +2,15 @@
     display: flex;
     align-items: center;
 }
+
+%button-primary{
+    background-color: $color_primary;
+    color: #fff;
+    border: $color_primary;
+}
+
+%button-wide{
+    width: 100%;
+    padding: 0.75rem 0.25rem;
+    font-size: 1.25rem;
+}

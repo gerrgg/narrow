@@ -159,3 +159,8 @@ function narrow_mobile_2nd_menu(){
 	
 }
 add_action( 'narrow_mobile_menu', 'narrow_mobile_2nd_menu', 5 );
+
+add_action( 'woocommerce_before_account_navigation', 'narrow_myaccount_navigation_label', 5 );
+function narrow_myaccount_navigation_label(){
+	printf( "<h3>Account links</h3>" );
+}

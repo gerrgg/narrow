@@ -163,3 +163,38 @@ if ( ! function_exists( 'wp_body_open' ) ) :
 		do_action( 'wp_body_open' );
 	}
 endif;
+
+
+add_filter("woocommerce_checkout_fields", "custom_override_checkout_fields", 1);
+function custom_override_checkout_fields($fields) {
+    $fields['billing']['billing_first_name']['priority'] = 1;
+    $fields['billing']['billing_last_name']['priority'] = 2;
+    $fields['billing']['billing_company']['priority'] = 4;
+    $fields['billing']['billing_address_1']['priority'] = 5;
+    $fields['billing']['billing_address_2']['priority'] = 6;
+    $fields['billing']['billing_state']['priority'] = 7;
+    $fields['billing']['billing_city']['priority'] = 9;
+    $fields['billing']['billing_postcode']['priority'] = 9;
+    $fields['billing']['billing_email']['priority'] = 10;
+    $fields['billing']['billing_phone']['priority'] = 11;
+    return $fields;
+}
+
+add_filter( 'woocommerce_default_address_fields', 'custom_override_default_locale_fields' );
+function custom_override_default_locale_fields( $fields ) {
+	/**
+	 * Makes the country field the very first in account/checkout
+	 */
+    $fields['country']['priority'] = 1;
+    return $fields;
+}
+
+// add_action( 'wp_footer', 'narrow_wp_action_hook' );
+function narrow_wp_action_hook()
+/**
+ * Used to check hooks for specific actions
+ */
+{
+    global $wp_filter;
+	echo "<pre>" . print_r($wp_filter, true) . "</pre>";
+}

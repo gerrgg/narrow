@@ -2,6 +2,10 @@ body.woocommerce-account {
     header.entry-header {
         display: none;
     }
+
+    .content-area{
+        padding: 0 .5rem;
+    }
 }
 
 #customer_login {
@@ -31,14 +35,11 @@ body.woocommerce-account {
 
     button.woocommerce-form-login__submit,
     button.woocommerce-form-register__submit {
-        background-color: $color_primary;
-        color: #fff;
-        border: $color_primary;
+        @extend %button-primary;
+        @extend %button-wide;
+
         margin-top: 0.5rem;
 
-        width: 100%;
-        padding: 0.75rem 0.25rem;
-        font-size: 1.25rem;
     }
 
     .woocommerce-LostPassword {
@@ -66,5 +67,104 @@ p.input-wrapper {
     i {
         padding-right: 0.5rem;
         @include font-size(1.75);
+    }
+}
+
+nav.woocommerce-MyAccount-navigation{
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: $border-light;
+
+    ul{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        background-color: $color-white;
+        border: $border-light;
+        border-radius: 4px;
+
+        li{
+            padding: .5rem;
+            border-bottom: $border-light;
+
+            a{
+                
+                &:before{
+                    font-family: FontAwesome;
+                    float: right;
+                }
+
+            }
+
+            &:last-child{
+                border-bottom: unset;
+            }
+        }
+
+        li.woocommerce-MyAccount-navigation-link--dashboard a:before{
+            content: "\f3fd";
+        }
+        li.woocommerce-MyAccount-navigation-link--orders a:before{
+            content: "\f466";
+        }
+        li.woocommerce-MyAccount-navigation-link--downloads a:before{
+            content: "\f019";
+        }
+        li.woocommerce-MyAccount-navigation-link--edit-address a:before{
+            content: "\f124";
+        }
+        li.woocommerce-MyAccount-navigation-link--edit-account a:before{
+            content: "\f4ff";
+        }
+        li.woocommerce-MyAccount-navigation-link--customer-logout a:before{
+            content: "\f2f5";
+        }
+    }
+}
+
+.woocommerce-MyAccount-content{
+    background-color: $color-white;
+    padding: 15px;
+    margin: 0 -15px;
+
+    .woocommerce-EditAccountForm fieldset{
+        background-color: $woocommerce__color-error;
+        color: #fff;
+
+        h4{
+            @include font-size(1.25);
+        }
+
+    }
+
+    .woocommerce-address-fields__field-wrapper{
+        margin-bottom: 1rem;
+
+        p{
+            margin: 0;
+            padding: 0;
+
+            span input{
+                padding: .75rem;
+                width: 100%;
+                border-radius: 0px;
+            }
+
+        }
+
+        #billing_country_field{
+            margin-bottom: 1rem;
+
+        }
+    }
+
+    .woocommerce-Address{
+        padding: .5rem;
+        border: $border-light;
+    }
+
+    button{
+        @extend %button-primary;
+        @extend %button-wide;
     }
 }

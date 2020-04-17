@@ -464,6 +464,9 @@ dt {
 dd {
   margin: 0 1.5em 1.5em; }
 
+li a {
+  text-decoration: none; }
+
 img {
   height: auto;
   /* Make sure images are scaled correctly. */
@@ -688,18 +691,18 @@ a {
     #masthead .site-title a {
       font-size: 2rem;
       font-family: "Caesar Dressing", cursive;
-      color: #358c69; }
+      color: #0fd786; }
 
 .search-form .search-field {
   width: 85%;
   border-radius: 0px;
-  padding: 0px;
+  padding: .5rem;
   height: 38px; }
 .search-form .search-submit {
   border-radius: 0px;
-  border-color: #358c69;
+  border-color: #0fd786;
   width: 15%;
-  background-color: #358c69;
+  background-color: #0fd786;
   color: #fff;
   height: 100%; }
   .search-form .search-submit i {
