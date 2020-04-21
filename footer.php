@@ -32,5 +32,12 @@
 
 <?php wp_footer(); ?>
 
+<div id="bottom-shelf" aria-open="false">
+	<div class="inner">
+		Bottom 
+		<?php do_action( 'narrow_bottom_shelf' ) ?>
+	</div>
+</div>
+
 </body>
 </html>

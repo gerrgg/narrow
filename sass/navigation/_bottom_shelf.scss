@@ -1,0 +1,39 @@
+#bottom-shelf{
+    height: 0;
+    position: fixed;
+    bottom: 0;
+    z-index: 1994;
+    transition: all .25s;
+    width: 100%;
+    overflow: hidden;
+
+    &.show{
+        height: auto;
+    }
+
+    .inner{
+        padding: 1rem;
+        background-color: $color-white;
+    }
+
+
+
+}
+
+#user-location-prompt{
+    background-color: $color__header-background-offset;
+    color: $color-white;
+    padding: .5rem;
+    @extend %flex-align-center;
+    cursor: pointer;
+
+    i{
+        color: $color-primary;
+        @include font-size(1.5);
+    }
+
+    span{
+        padding: 0 .5rem;
+        font-size: 14px;
+    }
+}

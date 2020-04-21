@@ -164,3 +164,13 @@ add_action( 'woocommerce_before_account_navigation', 'narrow_myaccount_navigatio
 function narrow_myaccount_navigation_label(){
 	printf( "<h3>Account links</h3>" );
 }
+
+add_action( 'narrow_after_header_before_content', 'narrow_add_address_prompt', 10 );
+function narrow_add_address_prompt(){
+	?>
+	<div id="user-location-prompt">
+		<i class="fas fa-compass"></i>
+		<span>Select a location to see product availablity</span>
+	</div>
+	<?php
+}

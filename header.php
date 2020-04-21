@@ -60,4 +60,6 @@
 
 	</header><!-- #masthead -->
 
+	<?php do_action( 'narrow_after_header_before_content' ); ?>
+
 	<div id="content" class="site-content">
