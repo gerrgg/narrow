@@ -41,9 +41,23 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	## Captions
 	## Galleries
 --------------------------------------------------------------*/
-.slideout-menu header a, #masthead #top-bar-nav, #masthead #top-bar-nav .top-bar-left, #masthead #top-bar-nav .top-bar-right, .search-form, #bottom-shelf .header, #user-location-prompt {
+.form-inline, .slideout-menu header a, #masthead #top-bar-nav, #masthead #top-bar-nav .top-bar-left, #masthead #top-bar-nav .top-bar-right, .search-form, #user-location-prompt {
   display: flex;
   align-items: center; }
+
+#bottom-shelf .header {
+  display: flex;
+  align-items: flex-end; }
+
+#bottom-shelf .content a[role="button"] {
+  background-color: #0fd786;
+  color: #fff;
+  border: #0fd786; }
+
+#bottom-shelf .content a[role="button"] {
+  width: 100%;
+  padding: 0.75rem 0.25rem;
+  font-size: 1.25rem; }
 
 /*--------------------------------------------------------------
 # Normalize
@@ -493,6 +507,7 @@ input[type="submit"] {
   border-radius: 3px;
   background: #e6e6e6;
   color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
   font-size: 12px;
   font-size: 0.75rem;
   line-height: 1;
@@ -510,6 +525,12 @@ input[type="submit"] {
   input[type="submit"]:active,
   input[type="submit"]:focus {
     border-color: #aaa #bbb #bbb; }
+
+a[role="button"] {
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  cursor: pointer; }
 
 input[type="text"],
 input[type="email"],
@@ -557,6 +578,9 @@ textarea {
 
 .woocommerce-form-row--wide input {
   width: 100%; }
+
+.form-inline * {
+  margin: 0 0.25rem; }
 
 /*--------------------------------------------------------------
 # Navigation
@@ -662,7 +686,7 @@ a {
   top: 0;
   bottom: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 99; }
 
 /*--------------------------------------------------------------
@@ -719,23 +743,33 @@ a {
   z-index: 1994;
   transition: all .25s;
   width: 100%;
+  height: 100%;
   overflow: hidden;
-  background-color: #fff; }
+  flex-flow: column; }
   #bottom-shelf .header {
     color: #585563;
     justify-content: space-between;
     padding: .5rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    height: 100%;
+    cursor: pointer; }
     #bottom-shelf .header .close {
       font-size: 24px;
       font-size: 1.5rem;
+      color: #fff;
       right: 5px;
       top: 0;
-      cursor: pointer; }
+      padding: .75rem; }
   #bottom-shelf.show {
-    display: block; }
+    display: flex; }
   #bottom-shelf .content {
-    padding: 1rem; }
+    background-color: #fff;
+    padding: .5rem 1rem; }
+    #bottom-shelf .content .title {
+      font-size: 24px;
+      font-size: 1.5rem;
+      padding: 0;
+      margin: 0; }
 
 #user-location-prompt {
   background-color: #333;

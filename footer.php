@@ -34,11 +34,11 @@
 
 <div id="bottom-shelf">
 	<div class="header">
-		<span><?php do_action( 'narrow_bottom_shelf_header'); ?> HEADER</span>
-		<span class="close">&times;</span>
+		<span><?php do_action( 'narrow_bottom_shelf_header'); ?></span>
+		<span class="close">DONE</span>
 	</div> 
 	<div class="content">
-		<?php do_action( 'narrow_bottom_shelf_inner' ); ?>
+		<?php do_action( 'narrow_bottom_shelf' ); ?>
 	</div>
 </div>
 

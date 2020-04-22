@@ -4,3 +4,11 @@
 .woocommerce-form-row--wide input{ 
     width: 100%;
 }
+
+.form-inline{
+    @extend %flex-align-center;
+
+    *{
+        margin: 0 0.25rem;
+    }
+}

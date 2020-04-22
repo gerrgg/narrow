@@ -3,7 +3,7 @@ jQuery(document).ready(function( $ ){
 
         wrapper: $('#bottom-shelf'),
         content: $('#bottom-shelf .content'),
-        close_button: $('#bottom-shelf span.close'),
+        close_button: $('#bottom-shelf .header'),
         toggle: $('.open-shelf'),
         body: $('#page'),
 
@@ -13,13 +13,28 @@ jQuery(document).ready(function( $ ){
         },
 
         open: function( e ){
-            if( shelf.wrapper.is(":hidden") ){
-                console.log( 'open' );
+            let action = $(this).attr('data-action');
 
+            shelf.get_content(action);
+
+            if( shelf.wrapper.is(":hidden") ){
                 shelf.body.addClass('panel-open');
                 shelf.wrapper.addClass('show');
             }
             // shelf.wrapper.addClass('show');
+        },
+
+        get_content: function( action, args = [] ){
+
+            let data = { action: action, data: args }
+
+            console.log( data );
+            
+            $.post(wp_ajax.url, data, function( response ){
+                console.log( response );
+
+                shelf.content.html( response );
+            });
         },
 
         close: function( e ){

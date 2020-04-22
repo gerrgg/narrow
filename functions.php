@@ -143,6 +143,11 @@ add_action( 'widgets_init', 'narrow_widgets_init' );
  * Enqueue scripts and styles.
  */
 function narrow_scripts() {
+
+  // make admin urls available to JS
+	
+
+	
 	wp_enqueue_style( 'narrow-style', get_stylesheet_uri(), array(), _S_VERSION );
 
 	wp_enqueue_script( 'slideout', get_template_directory_uri() . '/js/slideout.min.js', array(), _S_VERSION, true );
@@ -156,8 +161,15 @@ function narrow_scripts() {
 	}
 
 	wp_enqueue_script( 'font-awesome', 'https://kit.fontawesome.com/dd960d1f1a.js' );
+
+	wp_localize_script( 'bottom-shelf', 'wp_ajax', array(
+		'url' => admin_url( 'admin-ajax.php' ),
+		'post' => admin_url( 'admin-post.php' ),
+	) );
 }
 add_action( 'wp_enqueue_scripts', 'narrow_scripts' );
+
+
 
 /**
  * Custom template tags for this theme.
