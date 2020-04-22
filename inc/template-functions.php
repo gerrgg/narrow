@@ -201,6 +201,13 @@ function narrow_enter_zip_code(){
 	//https://stackoverflow.com/questions/17219916/json-decode-returns-json-error-syntax-but-online-formatter-says-the-json-is-ok
 	var_dump( $address );
 
+	global $woocommerce;
+	print_r( $woocommerce );
+
+	// get WC_Customer
+	// https://docs.woocommerce.com/wc-apidocs/source-class-WC_Customer.html#833-852
+	// WC_Customer->set_shipping_location()
+
 }
 
 function narrow_clean_unseen_chars( $str ){
