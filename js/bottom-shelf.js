@@ -6,6 +6,7 @@ jQuery(document).ready(function( $ ){
         close_button: $('#bottom-shelf .header'),
         toggle: $('.open-shelf'),
         body: $('#page'),
+        
 
         init: function(){
            shelf.toggle.click( this.open )

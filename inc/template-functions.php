@@ -186,3 +186,37 @@ function narrow_choose_your_location(){
 	wp_die();
 }
 
+add_action( 'admin_post_enter-zip-code', 'narrow_enter_zip_code' );
+add_action( 'admin_post_nopriv_enter-zip-code', 'narrow_enter_zip_code' );
+
+function narrow_enter_zip_code(){
+	/**
+	 * 
+	 */
+	$zip = stripslashes($_REQUEST['zip']);
+	$api_key = "JT6X1PYK9O53Y1WIMLU3";
+	$request_url = sprintf( "http://api.zip-codes.com/ZipCodesAPI.svc/1.0/QuickGetZipCodeDetails/%s?key=%s", $zip, $api_key);
+	$address = json_decode( narrow_clean_unseen_chars( file_get_contents($request_url) ), true );
+
+	//https://stackoverflow.com/questions/17219916/json-decode-returns-json-error-syntax-but-online-formatter-says-the-json-is-ok
+	var_dump( $address );
+
+}
+
+function narrow_clean_unseen_chars( $str ){
+	// This will remove unwanted characters. Check http://www.php.net/chr for details
+	for ($i = 0; $i <= 31; ++$i) { 
+		$str = str_replace(chr($i), "", $str); 
+	}
+	
+	$str = str_replace(chr(127), "", $str);
+
+	// This is the most common part
+	// Some file begins with 'efbbbf' to mark the beginning of the file. (binary level)
+	// here we detect it and we remove it, basically it's the first 3 characters 
+
+	if (0 === strpos(bin2hex($str), 'efbbbf')) {
+		$str = substr($str, 3);
+	}
+	return $str;
+}

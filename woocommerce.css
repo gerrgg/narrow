@@ -22,8 +22,7 @@ p.input-wrapper {
 #customer_login button.woocommerce-form-login__submit,
 #customer_login button.woocommerce-form-register__submit, .woocommerce-MyAccount-content a {
   width: 100%;
-  padding: 0.75rem 0.25rem;
-  font-size: 1.25rem; }
+  padding: 0.75rem 0.25rem; }
 
 /**
  * Shop tables

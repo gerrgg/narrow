@@ -18,6 +18,7 @@
 
 			a {
 				word-wrap: none;
+				@include font-size(0.9);
 			}
 		}
 	}

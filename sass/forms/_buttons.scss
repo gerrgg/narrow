@@ -29,4 +29,5 @@ a[role="button"]{
 	display: block;
 	text-align: center;
 	cursor: pointer;
+	@include font-size(1);
 }

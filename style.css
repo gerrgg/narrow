@@ -56,8 +56,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 #bottom-shelf .content a[role="button"] {
   width: 100%;
-  padding: 0.75rem 0.25rem;
-  font-size: 1.25rem; }
+  padding: 0.75rem 0.25rem; }
 
 /*--------------------------------------------------------------
 # Normalize
@@ -385,7 +384,8 @@ h6 {
   clear: both; }
 
 p {
-  margin-bottom: 1.5em; }
+  margin-bottom: 1.5em;
+  font-size: 0.85rem; }
 
 dfn,
 cite,
@@ -530,7 +530,9 @@ a[role="button"] {
   text-decoration: none;
   display: block;
   text-align: center;
-  cursor: pointer; }
+  cursor: pointer;
+  font-size: 16px;
+  font-size: 1rem; }
 
 input[type="text"],
 input[type="email"],
@@ -618,7 +620,9 @@ a {
       padding-left: 0rem;
       white-space: nowrap; }
       .main-navigation ul li a {
-        word-wrap: none; }
+        word-wrap: none;
+        font-size: 14.4px;
+        font-size: 0.9rem; }
 
 .slideout-menu {
   position: fixed;
@@ -754,8 +758,8 @@ a {
     height: 100%;
     cursor: pointer; }
     #bottom-shelf .header .close {
-      font-size: 24px;
-      font-size: 1.5rem;
+      font-size: 16px;
+      font-size: 1rem;
       color: #fff;
       right: 5px;
       top: 0;
@@ -766,8 +770,8 @@ a {
     background-color: #fff;
     padding: .5rem 1rem; }
     #bottom-shelf .content .title {
-      font-size: 24px;
-      font-size: 1.5rem;
+      font-size: 20px;
+      font-size: 1.25rem;
       padding: 0;
       margin: 0; }
 
