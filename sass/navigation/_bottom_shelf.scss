@@ -1,19 +1,36 @@
 #bottom-shelf{
-    height: 0;
+    display: none;
     position: fixed;
     bottom: 0;
     z-index: 1994;
     transition: all .25s;
     width: 100%;
     overflow: hidden;
+    background-color: $color-white;
 
-    &.show{
-        height: auto;
+    .header{
+        @extend %flex-align-center;
+        color: $color-light-grey;
+        justify-content: space-between;
+        padding: .5rem;
+        border-bottom: $border-light;
+
+
+        .close{
+            @include font-size(1.5);
+            // position: absolute;
+            right: 5px;
+            top: 0;
+            cursor: pointer;
+        }
     }
-
-    .inner{
+    
+    &.show{
+        display: block;
+        
+    }
+    .content{
         padding: 1rem;
-        background-color: $color-white;
     }
 
 

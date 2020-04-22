@@ -41,7 +41,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	## Captions
 	## Galleries
 --------------------------------------------------------------*/
-.slideout-menu header a, #masthead #top-bar-nav, #masthead #top-bar-nav .top-bar-left, #masthead #top-bar-nav .top-bar-right, .search-form, #user-location-prompt {
+.slideout-menu header a, #masthead #top-bar-nav, #masthead #top-bar-nav .top-bar-left, #masthead #top-bar-nav .top-bar-right, .search-form, #bottom-shelf .header, #user-location-prompt {
   display: flex;
   align-items: center; }
 
@@ -713,18 +713,29 @@ a {
 ## Bottom Shelf
 --------------------------------------------------------------*/
 #bottom-shelf {
-  height: 0;
+  display: none;
   position: fixed;
   bottom: 0;
   z-index: 1994;
   transition: all .25s;
   width: 100%;
-  overflow: hidden; }
+  overflow: hidden;
+  background-color: #fff; }
+  #bottom-shelf .header {
+    color: #585563;
+    justify-content: space-between;
+    padding: .5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+    #bottom-shelf .header .close {
+      font-size: 24px;
+      font-size: 1.5rem;
+      right: 5px;
+      top: 0;
+      cursor: pointer; }
   #bottom-shelf.show {
-    height: auto; }
-  #bottom-shelf .inner {
-    padding: 1rem;
-    background-color: #fff; }
+    display: block; }
+  #bottom-shelf .content {
+    padding: 1rem; }
 
 #user-location-prompt {
   background-color: #333;

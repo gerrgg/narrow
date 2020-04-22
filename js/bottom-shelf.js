@@ -1,28 +1,38 @@
 jQuery(document).ready(function( $ ){
-    var bottom_shelf = {
+    var shelf = {
 
-        toggle: $('#user-location-prompt'),
         wrapper: $('#bottom-shelf'),
+        content: $('#bottom-shelf .content'),
+        close_button: $('#bottom-shelf span.close'),
+        toggle: $('.open-shelf'),
         body: $('#page'),
 
         init: function(){
-            $('#user-location-prompt').click( this.open );
+           shelf.toggle.click( this.open )
+           this.close_button.click( this.close )
         },
 
         open: function( e ){
-            
-            bottom_shelf.body.addClass('panel-open')
-            bottom_shelf.wrapper.addClass('show').attr('aria-open', true);
+            if( shelf.wrapper.is(":hidden") ){
+                console.log( 'open' );
 
+                shelf.body.addClass('panel-open');
+                shelf.wrapper.addClass('show');
+            }
+            // shelf.wrapper.addClass('show');
         },
 
         close: function( e ){
-            if( bottom_shelf.wrapper.attr( 'aria-open' ) == 'true' ){
-                console.log( 'close' )
+            if( shelf.wrapper.is(":visible") ){
+                console.log( 'close' );
+
+                shelf.body.removeClass('panel-open');
+                shelf.wrapper.removeClass('show');
             }
         }
 
+
     }
 
-    bottom_shelf.init();
+    shelf.init();
 });
