@@ -144,17 +144,12 @@ add_action( 'widgets_init', 'narrow_widgets_init' );
  */
 function narrow_scripts() {
 
-  // make admin urls available to JS
-	
-
-	
 	wp_enqueue_style( 'narrow-style', get_stylesheet_uri(), array(), _S_VERSION );
-
-	wp_enqueue_script( 'slideout', get_template_directory_uri() . '/js/slideout.min.js', array(), _S_VERSION, true );
-
+	wp_register_script( 'functions', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), _S_VERSION, true );
 	wp_enqueue_script( 'bottom-shelf', get_template_directory_uri() . '/js/bottom-shelf.js', array( 'jquery' ), _S_VERSION, true );
-	wp_enqueue_script( 'narrow-skip-link-focus-fix', get_template_directory_uri() . '/js/mobile-menu.js', array(), _S_VERSION, true );
-	wp_enqueue_script( 'narrow-mobile-menu', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'narrow-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'slideout', get_template_directory_uri() . '/js/slideout.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'narrow-mobile-menu', get_template_directory_uri() . '/js/mobile-menu.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -168,6 +163,35 @@ function narrow_scripts() {
 	) );
 }
 add_action( 'wp_enqueue_scripts', 'narrow_scripts' );
+
+function narrow_inline_cookie_functions(){
+	?>
+	<script>
+		function setCookie(cname, cvalue, exdays) {
+			var d = new Date();
+			d.setTime(d.getTime() + (exdays*24*60*60*1000));
+			var expires = "max-age="+ d.toUTCString();
+			document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		}
+	
+	function getCookie(cname) {
+		var name = cname + "=";
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(';');
+		for(var i = 0; i <ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length);
+		}
+		}
+		return "";
+	}
+	</script>
+	<?php
+}
 
 
 

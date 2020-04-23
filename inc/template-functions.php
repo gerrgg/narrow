@@ -167,15 +167,24 @@ function narrow_myaccount_navigation_label(){
 
 add_action( 'narrow_after_header_before_content', 'narrow_add_address_prompt', 10 );
 function narrow_add_address_prompt(){
+	/**
+	 * Checks if user is logged in or has login cookie, and gets html accordingly
+	 */
 	$user = wp_get_current_user();
-
-	if( ! $user->ID ){
+	
+	if( ! $user->ID && ! isset( $_COOKIE['narrow_address'] ) ){
 		$msg = "Select a location to see product availablity";
 	} else {
+		$cookie_address = json_decode( stripslashes( $_COOKIE['narrow_address'] ) );
+
+		$address = array(
+			'user' => ( ! $user->ID ) ? ' you at ' : $user->displayname,
+			'city' => ( ! $user->ID ) ? $cookie_address->City : get_user_meta( $user->ID, 'shipping_city', true ),
+			'postcode' => ( ! $user->ID ) ? $cookie_address->ZipCode : get_user_meta( $user->ID, 'shipping_postcode', true ),
+		);
+
 		$msg = sprintf( "Deliver to %s - %s %s", 
-			$user->display_name,
-			get_user_meta( $user->ID, 'shipping_city', true ),
-			get_user_meta( $user->ID, 'shipping_postcode', true )
+			$address['user'], $address['city'], $address['postcode']
 		);
 	}
 
@@ -186,6 +195,7 @@ function narrow_add_address_prompt(){
 	</div>
 	<?php
 }
+
 
 add_action( 'wp_ajax_no-location', 'narrow_choose_your_location' );
 add_action( 'wp_ajax_nopriv_no-location', 'narrow_choose_your_location' );
@@ -204,33 +214,49 @@ add_action( 'admin_post_nopriv_enter-zip-code', 'narrow_enter_zip_code' );
 
 function narrow_enter_zip_code(){
 	/**
-	 * Admin Post - For when a user submits a zip code in the add address form
+	 * If the user is logged in, her information is updated via WP_User, if not logged in store in cookie.
 	 */
+
+	 // get user and zip
 	$user = wp_get_current_user();
-	$zip = stripslashes($_REQUEST['zip']);
-	//https://stackoverflow.com/questions/17219916/json-decode-returns-json-error-syntax-but-online-formatter-says-the-json-is-ok
+	$zip = $_REQUEST['zip'];
 	
 	if( $user->ID ){
+		// logged in
 		$address = narrow_get_zip_code_json( $zip );
 		update_user_meta( $user->ID, 'shipping_postcode', $zip );
 		update_user_meta( $user->ID, 'shipping_city', $address['City'] );
 		update_user_meta( $user->ID, 'shipping_state', $address['State'] );
 	} else {
-		// put data into local storage
-	}
+		// not logged in
+		$address = narrow_get_zip_code_json( $zip, false );
+		echo narrow_inline_cookie_functions();
+		?>
+		<script> 
+			console.log( "<?php echo addslashes($address); ?>" );
+			setCookie( 'narrow_address', "<?php echo addslashes($address); ?>", 7 );
+		</script>
+		<?php
+	} 
 
-	wp_redirect('/');
+	// wp_redirect('/');
 }
 
-function narrow_get_zip_code_json( $zip ){
+function narrow_get_zip_code_json( $zip, $convert = true ){
 	$api_key = "JT6X1PYK9O53Y1WIMLU3";
 	$request_url = sprintf( "http://api.zip-codes.com/ZipCodesAPI.svc/1.0/QuickGetZipCodeDetails/%s?key=%s", $zip, $api_key);
+	$clean_json = narrow_clean_unseen_chars( file_get_contents($request_url) );
+
+	if( ! $convert ) return $clean_json;
 	
-	$address = json_decode( narrow_clean_unseen_chars( file_get_contents($request_url) ), true );
+	$address = json_decode( $clean_json, true );
+
 	return ( isset( $address['Error'] ) ) ? false : $address;
 }
 
 function narrow_clean_unseen_chars( $str ){
+	//https://stackoverflow.com/questions/17219916/json-decode-returns-json-error-syntax-but-online-formatter-says-the-json-is-ok
+
 	// This will remove unwanted characters. Check http://www.php.net/chr for details
 	for ($i = 0; $i <= 31; ++$i) { 
 		$str = str_replace(chr($i), "", $str); 
@@ -247,3 +273,4 @@ function narrow_clean_unseen_chars( $str ){
 	}
 	return $str;
 }
+
