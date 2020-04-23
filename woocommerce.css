@@ -14,13 +14,13 @@ p.input-wrapper {
   align-items: center; }
 
 #customer_login button.woocommerce-form-login__submit,
-#customer_login button.woocommerce-form-register__submit, .woocommerce-MyAccount-content a {
+#customer_login button.woocommerce-form-register__submit {
   background-color: #0fd786;
   color: #fff;
   border: #0fd786; }
 
 #customer_login button.woocommerce-form-login__submit,
-#customer_login button.woocommerce-form-register__submit, .woocommerce-MyAccount-content a {
+#customer_login button.woocommerce-form-register__submit {
   width: 100%;
   padding: 0.75rem 0.25rem; }
 

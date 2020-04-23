@@ -163,8 +163,5 @@ nav.woocommerce-MyAccount-navigation{
         border: $border-light;
     }
 
-    a{
-        @extend %button-primary;
-        @extend %button-wide;
-    }
+    
 }

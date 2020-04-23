@@ -167,10 +167,22 @@ function narrow_myaccount_navigation_label(){
 
 add_action( 'narrow_after_header_before_content', 'narrow_add_address_prompt', 10 );
 function narrow_add_address_prompt(){
+	$user = wp_get_current_user();
+
+	if( ! $user->ID ){
+		$msg = "Select a location to see product availablity";
+	} else {
+		$msg = sprintf( "Deliver to %s - %s %s", 
+			$user->display_name,
+			get_user_meta( $user->ID, 'shipping_city', true ),
+			get_user_meta( $user->ID, 'shipping_postcode', true )
+		);
+	}
+
 	?>
 	<div id="user-location-prompt" class="open-shelf" data-action="no-location">
 		<i class="fas fa-compass"></i>
-		<span>Select a location to see product availablity</span>
+		<span><?php echo $msg ?></span>
 	</div>
 	<?php
 }
@@ -179,6 +191,7 @@ add_action( 'wp_ajax_no-location', 'narrow_choose_your_location' );
 add_action( 'wp_ajax_nopriv_no-location', 'narrow_choose_your_location' );
 
 function narrow_choose_your_location(){
+	// Add conditon for getting non-logged in template
 	ob_start();
 	get_template_part( 'template-parts/no', 'location' );
 	$html = ob_get_clean();
@@ -191,23 +204,30 @@ add_action( 'admin_post_nopriv_enter-zip-code', 'narrow_enter_zip_code' );
 
 function narrow_enter_zip_code(){
 	/**
-	 * 
+	 * Admin Post - For when a user submits a zip code in the add address form
 	 */
+	$user = wp_get_current_user();
 	$zip = stripslashes($_REQUEST['zip']);
+	//https://stackoverflow.com/questions/17219916/json-decode-returns-json-error-syntax-but-online-formatter-says-the-json-is-ok
+	
+	if( $user->ID ){
+		$address = narrow_get_zip_code_json( $zip );
+		update_user_meta( $user->ID, 'shipping_postcode', $zip );
+		update_user_meta( $user->ID, 'shipping_city', $address['City'] );
+		update_user_meta( $user->ID, 'shipping_state', $address['State'] );
+	} else {
+		// put data into local storage
+	}
+
+	wp_redirect('/');
+}
+
+function narrow_get_zip_code_json( $zip ){
 	$api_key = "JT6X1PYK9O53Y1WIMLU3";
 	$request_url = sprintf( "http://api.zip-codes.com/ZipCodesAPI.svc/1.0/QuickGetZipCodeDetails/%s?key=%s", $zip, $api_key);
+	
 	$address = json_decode( narrow_clean_unseen_chars( file_get_contents($request_url) ), true );
-
-	//https://stackoverflow.com/questions/17219916/json-decode-returns-json-error-syntax-but-online-formatter-says-the-json-is-ok
-	var_dump( $address );
-
-	global $woocommerce;
-	print_r( $woocommerce );
-
-	// get WC_Customer
-	// https://docs.woocommerce.com/wc-apidocs/source-class-WC_Customer.html#833-852
-	// WC_Customer->set_shipping_location()
-
+	return ( isset( $address['Error'] ) ) ? false : $address;
 }
 
 function narrow_clean_unseen_chars( $str ){
