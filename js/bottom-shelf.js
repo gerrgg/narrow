@@ -20,7 +20,7 @@ jQuery(document).ready(function( $ ){
 
             if( shelf.wrapper.is(":hidden") ){
                 shelf.body.addClass('panel-open');
-                shelf.wrapper.addClass('show');
+                shelf.wrapper.addClass('show ' + action);
             }
             // shelf.wrapper.addClass('show');
         },

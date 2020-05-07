@@ -165,6 +165,39 @@ function narrow_myaccount_navigation_label(){
 	printf( "<h3>Account links</h3>" );
 }
 
+function narrow_get_address_from_user(){
+	/**
+	 * Helper function for using a user's meta data or a cookie for location information.
+	 * @return array $address - User location information.
+	 */
+	$user = wp_get_current_user();
+	
+	
+	if( is_user_logged_in() ){
+
+		// use DB stuff.
+		$address = array(
+			'user' => $user->display_name,
+			'city' => get_user_meta( $user->ID, 'shipping_city', true ),
+			'postcode' => get_user_meta( $user->ID, 'shipping_postcode', true ),
+		);
+
+	} else if( isset( $_COOKIE['narrow_address'] ) ){
+
+		$cookie_address = json_decode( stripslashes( $_COOKIE['narrow_address'] ) );
+		$address = array(
+			'user' => ' you at ',
+			'city' => $cookie_address->City,
+			'postcode' => $cookie_address->ZipCode
+		);
+
+	} else {
+		$address = array();
+	}
+
+	return $address;
+}
+
 add_action( 'narrow_after_header_before_content', 'narrow_add_address_prompt', 10 );
 function narrow_add_address_prompt(){
 	/**
@@ -175,13 +208,8 @@ function narrow_add_address_prompt(){
 	if( ! $user->ID && ! isset( $_COOKIE['narrow_address'] ) ){
 		$msg = "Select a location to see product availablity";
 	} else {
-		$cookie_address = json_decode( stripslashes( $_COOKIE['narrow_address'] ) );
 
-		$address = array(
-			'user' => ( ! $user->ID ) ? ' you at ' : $user->displayname,
-			'city' => ( ! $user->ID ) ? $cookie_address->City : get_user_meta( $user->ID, 'shipping_city', true ),
-			'postcode' => ( ! $user->ID ) ? $cookie_address->ZipCode : get_user_meta( $user->ID, 'shipping_postcode', true ),
-		);
+		$address = narrow_get_address_from_user();
 
 		$msg = sprintf( "Deliver to %s - %s %s", 
 			$address['user'], $address['city'], $address['postcode']
@@ -189,7 +217,7 @@ function narrow_add_address_prompt(){
 	}
 
 	?>
-	<div id="user-location-prompt" class="open-shelf" data-action="no-location">
+	<div id="user-location-prompt" class="open-shelf" data-action="shelf-location">
 		<i class="fas fa-compass"></i>
 		<span><?php echo $msg ?></span>
 	</div>
@@ -197,13 +225,13 @@ function narrow_add_address_prompt(){
 }
 
 
-add_action( 'wp_ajax_no-location', 'narrow_choose_your_location' );
-add_action( 'wp_ajax_nopriv_no-location', 'narrow_choose_your_location' );
+add_action( 'wp_ajax_shelf-location', 'narrow_choose_your_location' );
+add_action( 'wp_ajax_nopriv_shelf-location', 'narrow_choose_your_location' );
 
 function narrow_choose_your_location(){
 	// Add conditon for getting non-logged in template
 	ob_start();
-	get_template_part( 'template-parts/no', 'location' );
+	get_template_part( 'template-parts/shelf', 'location' );
 	$html = ob_get_clean();
 	echo $html;
 	wp_die();
@@ -221,7 +249,7 @@ function narrow_enter_zip_code(){
 	$user = wp_get_current_user();
 	$zip = $_REQUEST['zip'];
 	
-	if( $user->ID ){
+	if( is_user_logged_in() ){
 		// logged in
 		$address = narrow_get_zip_code_json( $zip );
 		update_user_meta( $user->ID, 'shipping_postcode', $zip );
@@ -232,14 +260,16 @@ function narrow_enter_zip_code(){
 		$address = narrow_get_zip_code_json( $zip, false );
 		echo narrow_inline_cookie_functions();
 		?>
-		<script> 
+		<script>
 			console.log( "<?php echo addslashes($address); ?>" );
 			setCookie( 'narrow_address', "<?php echo addslashes($address); ?>", 7 );
 		</script>
 		<?php
 	} 
 
-	// wp_redirect('/');
+	var_dump( $address );
+
+	wp_redirect('/');
 }
 
 function narrow_get_zip_code_json( $zip, $convert = true ){
@@ -274,3 +304,15 @@ function narrow_clean_unseen_chars( $str ){
 	return $str;
 }
 
+// add_filter("product_attributes_type_selector" , function( $array ){
+//     $array["image"] = __( 'Variation image', 'woocommerce' );
+//     return $array ;
+// }); 
+
+function wc_get_product_attribute_type( $attribute_name ){
+	global $wpdb;
+
+	$attribute_name = str_replace('pa_', '', $attribute_name);
+
+	return $wpdb->get_var( "SELECT attribute_type FROM {$wpdb->prefix}woocommerce_attribute_taxonomies WHERE attribute_name = '{$attribute_name}'" );
+}

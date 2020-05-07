@@ -27,3 +27,9 @@ var slideout = new Slideout({
 	  this.panel.classList.remove('panel-open');
 	  this.panel.removeEventListener('click', close);
 	});
+
+	// BACK BURNER**
+	// jQuery(document).on( 'found_variation', 'form.cart', function( event, variation ) {
+	// 	/* Your code */           
+	// 	console.log( event, variation );
+	// });

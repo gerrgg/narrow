@@ -774,6 +774,19 @@ a {
       font-size: 1.25rem;
       padding: 0;
       margin: 0; }
+  #bottom-shelf.shelf-location a.address {
+    text-decoration: none;
+    display: block;
+    position: relative;
+    padding: .75rem;
+    border: 1px dotted #fff;
+    background-color: #333;
+    color: #fff; }
+    #bottom-shelf.shelf-location a.address i {
+      color: #0fd786;
+      position: absolute;
+      right: 5px;
+      top: 15px; }
 
 #user-location-prompt {
   background-color: #333;

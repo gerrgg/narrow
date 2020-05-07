@@ -50,12 +50,31 @@
         }
     }
 
+    &.shelf-location{
+        a.address{
+            text-decoration: none;
+            display: block;
+            position: relative;
+            padding: .75rem;
+            border: 1px dotted $color-white;
+            background-color: $color_background-offset;
+            color: $color-white;
 
+            i{
+                color: $color-primary;
+                position: absolute;
+                right: 5px;
+                top: 15px;
+            }
+        }
+    }
 
 }
 
+
+
 #user-location-prompt{
-    background-color: $color__header-background-offset;
+    background-color: $color_background-offset;
     color: $color-white;
     padding: .5rem;
     @extend %flex-align-center;
